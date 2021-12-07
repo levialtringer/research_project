@@ -53,10 +53,19 @@ even_more_data$color <- c(round(runif(total, 1, 4), 0))
 
 
 # Perform analysis:
-analysis <- ggplot() + 
+analysis <- ggplot() +
   geom_tile(data = some_data, aes(x = important_x_var, y = important_y_var, fill = color)) + 
   geom_point(data = even_more_data, aes(x = x, y = y, alpha = color), colour = "lightgoldenrodyellow", shape = 16) +
+  # This is some code that will cause a conflict
   geom_point(data = more_data, aes(x = x, y = y, colour = color, size = size), shape = 16) +
+  geom_segment(aes(x = 2.5, xend = 4.5, y = 1.5, yend = 1.5), colour = "blueviolet", size = 2) +
+  geom_segment(aes(x = 5.5, xend = 8.5, y = 1.5, yend = 1.5), colour = "dodgerblue3", size = 2) +
+  geom_segment(aes(x = 13.5, xend = 16.5, y = 1.5, yend = 1.5), colour = "blueviolet", size = 2) +
+  geom_segment(aes(x = 17.5, xend = 19.5, y = 1.5, yend = 1.5), colour = "dodgerblue3", size = 2) +
+  geom_segment(aes(x = 3.5, xend = 3.5, y = 0.5, yend = 2.5), colour = "blueviolet", size = 2) +
+  geom_segment(aes(x = 7.0, xend = 7.0, y = 0.5, yend = 2.5), colour = "dodgerblue3", size = 2) +
+  geom_segment(aes(x = 15.0, xend = 15.0, y = 0.5, yend = 2.5), colour = "blueviolet", size = 2) +
+  geom_segment(aes(x = 18.5, xend = 18.5, y = 0.5, yend = 2.5), colour = "dodgerblue3", size = 2) +
   annotate("text", x = 11, y = 20, label = "Very Merry Results", size = 11) +
   scale_fill_identity() + 
   theme_bw() +
